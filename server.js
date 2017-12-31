@@ -21,16 +21,7 @@ io.on('connection', function (socket) {
     console.log('made socket connection', socket.id);
     clients.push(socket);
     //If only/first client, allow him to draw and give him a word
-    if(clients.length < 2){
-        console.log(clients.length);
-        randomWord = words[Math.floor(Math.random() * words.length)];
-        socket.emit('drawer', randomWord);
-    }
-    //If not first client, allow him to guess
-    else {
-        console.log(clients.length);
-        socket.emit('guesser');
-    }
+    checkUserQuantity();
     // first send the history to the new client
     for (var i in line_history) {
         socket.emit('draw_line', {line: line_history[i]});
@@ -55,6 +46,7 @@ io.on('connection', function (socket) {
         console.log('client %s has disconnected', socket.id);
         var i = clients.indexOf(socket);
         clients.splice(i, 1);
+        checkUserQuantity();
     });
 
     socket.on('submit_guess', function (guess) {
@@ -73,4 +65,20 @@ io.on('connection', function (socket) {
             socket.emit('incorrect_guess');
         }
     })
+
+
+    function checkUserQuantity() {
+        if(clients.length == 1){
+            console.log(clients.length);
+            randomWord = words[Math.floor(Math.random() * words.length)];
+            var onlyUser = clients[0].id;
+            console.log(onlyUser);
+            io.to(onlyUser).emit('drawer', randomWord);
+        }
+        //If not first client, allow him to guess
+        else {
+            console.log(clients.length);
+            socket.emit('guesser');
+        }
+    }
 });
