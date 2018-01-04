@@ -53,7 +53,7 @@ io.on('connection', function (socket) {
             socket.emit('guess_s', true);
             randomWord = words[Math.floor(Math.random() * words.length)];
             line_history = [];
-            io.emit('clear');
+            io.emit('clear_s');
             io.emit('drawer', randomWord);
             socket.broadcast.emit('guesser');
         }
