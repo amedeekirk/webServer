@@ -23,10 +23,13 @@ io.on('connection', function (socket) {
     console.log('Made connection with: ', socket.id);
     clients.push(socket);
     initialUserRole();
+    sendCurrentDrawing();
 
     //Give previously drawn content to new socket
-    for (var i in line_history) {
-        socket.emit('server_drawing', line_history[i]);
+    function sendCurrentDrawing() {
+        for (var i in line_history) {
+            socket.emit('server_drawing', line_history[i]);
+        }
     }
 
     //When line comes in from drawer, store and send to other clients
