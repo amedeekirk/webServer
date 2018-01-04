@@ -52,6 +52,7 @@ io.on('connection', function (socket) {
         if(original == userGuess){
             socket.emit('guess_s', true);
             randomWord = words[Math.floor(Math.random() * words.length)];
+            console.log('New word is: ' + randomWord);
             line_history = [];
             io.emit('clear_s');
             io.emit('drawer', randomWord);
@@ -74,9 +75,10 @@ io.on('connection', function (socket) {
         //If only user, generate random word and assign him as 'drawer'
         if(clients.length == 1){
             randomWord = words[Math.floor(Math.random() * words.length)];
+            console.log('New word is: ' + randomWord);
             var onlyUser = clients[0].id;
             line_history = [];
-            io.emit('clear canvas');
+            io.emit('clear_s');
             io.to(onlyUser).emit('drawer', randomWord);
         }
         //Otherwise assign 'guesser' role
