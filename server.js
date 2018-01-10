@@ -4,7 +4,7 @@ const socket = require('socket.io');
 const port = process.env.PORT || 4000;
 const words = require('./words');
 
-// App setup
+//App setup
 const server = app.listen(port, function(){
     console.log('listening for requests on port ' + port);
 });
@@ -28,7 +28,7 @@ io.on('connection', function (socket) {
     //Give previously drawn content to new socket
     function sendCurrentDrawing() {
         for (var i in line_history) {
-            socket.emit('server_drawing', line_history[i]);
+            socket.emit('drawing_s', line_history[i]);
         }
     }
 
