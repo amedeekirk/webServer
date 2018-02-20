@@ -4,6 +4,9 @@ const socket = require('socket.io');
 const port = process.env.PORT || 4000;
 const words = require('./words');
 
+
+app.use(express.static(__dirname + '/public'));
+
 //App setup
 const server = app.listen(port, function(){
     console.log('listening for requests on port ' + port);

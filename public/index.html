@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Pictionary</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script src="js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="js/index.js"></script>
+    <link href="css/index.css" rel="stylesheet" />
+</head>
+<body>
+<canvas id="whiteboard">
+    Sorry, your browser does not support HTML5 canvas technology.
+</canvas>
+<footer>
+    <input id="userGuess" autocomplete="off">
+    <div id="word">Initializing, please wait...</div>
+    <br>
+    <button id="clear">Clear</button>
+    <button id="brush">Brush</button>
+</footer>
+
+<div id="dropdownContent">
+    <div id="colorDiv">
+        <div class="color-box" id="000000" style="background-color: #000000"></div>
+        <div class="color-box" id="FF0000" style="background-color: #FF0000"></div>
+        <div class="color-box" id="00FF00" style="background-color: #00FF00"></div>
+        <div class="color-box" id="0000FF" style="background-color: #0000FF"></div>
+        <div class="color-box" id="FFFFFF"><img id='eraser' title='eraser' src="assets/icons/EraserWhite-64.png"></div>
+
+    </div>
+    <div id="customizeDiv">
+        <input id="customColor" type="text" value="#000000" maxlength="7">
+        <br>
+        <input id="brushSlider" type="range" min="1" max="19" value="2">
+    </div>
+</div>
+
+</body>
+</html>
