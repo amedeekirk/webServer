@@ -64,6 +64,14 @@ button:active{
     background: #444444;
 }
 
+#colorDiv:first-child {
+    margin-left: 1vmax;
+}
+
+#colorDiv:last-child {
+    margin-right: 1vmax;
+}
+
 .color-box {
     display: inline-block;
     margin: 1vmax .5vmax .5vmax;
@@ -71,14 +79,6 @@ button:active{
     height: 2vmax;
     width: 2vmax;
     border: 1px solid #FFFFFF;
-}
-
-#000000{
-    margin-left: 1vmax;
-}
-
-#FFFFFF{
-    margin-right: 1vmax;
 }
 
 #eraser{
@@ -108,4 +108,22 @@ button:active{
     background-color: #777777;
     border: none;
     width: 8vmax;
+}
+
+/* Utilities */
+
+.color-black {
+    background-color: #000000;
+}
+
+.color-red {
+    background-color: #FF0000;
+}
+
+.color-green {
+    background-color: #00FF00;
+}
+
+.color-blue {
+    background-color: #0000FF;
 }
