@@ -24,6 +24,7 @@ let randomWord;
 // Connection handler
 io.on('connection', (socket) => {
   function initialUserRole() {
+    console.log(clients.length);
     // If only user, generate random word and assign him as 'drawer'
     if (clients.length === 1) {
       randomWord = words[Math.floor(Math.random() * words.length)];
