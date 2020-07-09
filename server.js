@@ -1,4 +1,5 @@
 const express = require('express');
+const history = require('connect-history-api-fallback');
 
 const app = express();
 const socket = require('socket.io');
@@ -6,8 +7,16 @@ const socket = require('socket.io');
 const port = process.env.PORT || 4000;
 const words = require('./words');
 
+// Middleware for serving '/dist' directory
+const staticFileMiddleware = express.static('dist');
 
-app.use(express.static(`${__dirname}/public`));
+// Support history api
+app.use(history({
+  index: '/dist/index.html',
+}));
+
+// 2nd call for redirected requests
+app.use(staticFileMiddleware);
 
 // App setup
 const server = app.listen(port, () => {
