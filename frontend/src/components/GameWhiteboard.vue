@@ -17,8 +17,6 @@ export default {
       drawing: false,
       throttle: false,
       emit: false,
-      canvas: null,
-      ctx: null,
       brush: {
         color: '#000',
         width: 2,
@@ -29,7 +27,7 @@ export default {
   },
   mounted() {
     this.canvas = document.getElementById('canvas');
-    this.ctx = this.canvas.getContext('2d');
+    this.ctx = document.getElementById('canvas').getContext('2d');
     this.canvas.style.width = '100%';
     this.canvas.style.height = '100%';
     this.canvas.width = this.canvas.offsetWidth;
@@ -53,7 +51,6 @@ export default {
     },
 
     initDrawing(e) {
-      console.log(e);
       this.brush.x = e.clientX;
       this.brush.y = e.clientY;
       this.drawing = true;
@@ -77,6 +74,26 @@ export default {
         this.throttle = true;
         setTimeout(() => { this.throttle = false; }, 10);
       }
+    },
+  },
+
+  computed: {
+    ctx: {
+      get() {
+        return this.$store.state.ctx;
+      },
+      set(newValue) {
+        return this.$store.commit('mutateCtx', newValue);
+      },
+    },
+
+    canvas: {
+      get() {
+        return this.$store.state.canvas;
+      },
+      set(newValue) {
+        return this.$store.commit('mutateCanvas', newValue);
+      },
     },
   },
 };

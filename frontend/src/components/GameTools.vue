@@ -4,7 +4,7 @@
       <div>Your word is</div>
       <div class="text-xl font-semibold mb-2">{{word}}</div>
       <div class="game-tools__btn-group">
-        <button class="bg-secondary p-2 mr-1">Clear</button>
+        <button class="bg-secondary p-2 mr-1" @click="clearCanvas">Clear</button>
         <button class="bg-secondary p-2 ml-1">Brush</button>
       </div>
     </div>
@@ -21,11 +21,39 @@ import GameToolsBrush from './GameToolsBrush.vue';
 
 export default {
   name: 'GameTools',
+
   components: { GameToolsBrush },
+
   data() {
     return {
       word: 'test',
     };
+  },
+
+  methods: {
+    clearCanvas() {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+  },
+
+  computed: {
+    ctx: {
+      get() {
+        return this.$store.state.ctx;
+      },
+      set(newValue) {
+        return this.$store.commit('mutateCtx', newValue);
+      },
+    },
+
+    canvas: {
+      get() {
+        return this.$store.state.canvas;
+      },
+      set(newValue) {
+        return this.$store.commit('mutateCanvas', newValue);
+      },
+    },
   },
 };
 </script>

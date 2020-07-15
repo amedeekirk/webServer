@@ -150,10 +150,8 @@ window.onload = () => {
 
     if (isOk) {
       current.color = $(e.currentTarget).val();
-      console.log('bloop');
     } else {
       $(e.currentTarget).val(current.color);
-      console.log('bleep');
     }
   });
 
