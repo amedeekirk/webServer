@@ -10,8 +10,6 @@ export default {
 
 <style scoped>
   .game-players {
-    background-color: #0000FF;
-    grid-column: players-start / players-end;
-    grid-row: board-h-start / tools-end;
+    position: absolute;
   }
 </style>

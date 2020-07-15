@@ -54,8 +54,8 @@ export default {
 
     initDrawing(e) {
       console.log(e);
-      this.brush.x = e.clientX - this.canvas?.offsetLeft;
-      this.brush.y = e.clientY - this.canvas?.offsetTop;
+      this.brush.x = e.clientX;
+      this.brush.y = e.clientY;
       this.drawing = true;
     },
 
@@ -69,11 +69,11 @@ export default {
         this.drawLine(
           this.brush.x,
           this.brush.y,
-          e.clientX - this.canvas?.offsetLeft,
-          e.clientY - this.canvas?.offsetTop,
+          e.clientX,
+          e.clientY,
         );
-        this.brush.x = e.clientX - this.canvas?.offsetLeft;
-        this.brush.y = e.clientY - this.canvas?.offsetTop;
+        this.brush.x = e.clientX;
+        this.brush.y = e.clientY;
         this.throttle = true;
         setTimeout(() => { this.throttle = false; }, 10);
       }
@@ -84,8 +84,6 @@ export default {
 
 <style scoped>
   .game-whiteboard {
-    background-color: #cccccc;
-    grid-column: board-w-start / board-w-end;
     grid-row: board-h-start / board-h-end;
   }
 </style>

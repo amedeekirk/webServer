@@ -21,7 +21,6 @@ export default {
   .game {
     display: grid;
     height: 100%;
-    grid-template-columns: [players-start] 1fr [players-end board-w-start] 7fr[board-w-end];
-    grid-template-rows: [board-h-start] 15fr [board-h-end tools-start] 1fr [tools-end];
+    grid-template-rows: [board-h-start] 9fr [board-h-end tools-start] 1fr [tools-end];
   }
 </style>
