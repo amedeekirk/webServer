@@ -5,14 +5,16 @@
       <div class="text-xl font-semibold mb-2">{{word}}</div>
       <div class="game-tools__btn-group">
         <button class="bg-secondary p-2 mr-1" @click="clearCanvas">Clear</button>
-        <button class="bg-secondary p-2 ml-1">Brush</button>
+        <button class="bg-secondary p-2 ml-1" @click="hideBrushTools = !hideBrushTools">
+          Brush
+        </button>
       </div>
     </div>
     <div v-if="false">
       <label for="user-guess">Guess the word:</label>
       <input type="text" id="user-guess">
     </div>
-    <GameToolsBrush/>
+    <GameToolsBrush :is-hidden="hideBrushTools"/>
   </div>
 </template>
 
@@ -27,6 +29,7 @@ export default {
   data() {
     return {
       word: 'test',
+      hideBrushTools: true,
     };
   },
 

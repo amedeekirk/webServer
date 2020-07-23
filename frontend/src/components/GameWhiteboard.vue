@@ -18,8 +18,6 @@ export default {
       throttle: false,
       emit: false,
       brush: {
-        color: '#000',
-        width: 2,
         x: null,
         y: null,
       },
@@ -36,12 +34,12 @@ export default {
 
   methods: {
     drawLine(x0, y0, x1, y1) {
-      this.ctx.lineWidth = this.brush.width;
+      this.ctx.lineWidth = this.brushWidth;
       this.ctx.lineCap = 'round';
       this.ctx.beginPath();
       this.ctx.moveTo(x0, y0);
       this.ctx.lineTo(x1, y1);
-      this.ctx.strokeStyle = this.brush.color;
+      this.ctx.strokeStyle = this.brushColor;
       this.ctx.stroke();
       this.ctx.closePath();
 
@@ -94,6 +92,14 @@ export default {
       set(newValue) {
         return this.$store.commit('mutateCanvas', newValue);
       },
+    },
+
+    brushWidth() {
+      return this.$store.state.brushSize;
+    },
+
+    brushColor() {
+      return this.$store.state.brushColor;
     },
   },
 };

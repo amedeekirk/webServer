@@ -7,6 +7,8 @@ export default new Vuex.Store({
   state: {
     ctx: null,
     canvas: null,
+    brushColor: '#000',
+    brushSize: 2,
   },
   mutations: {
     mutateCtx(state, data) {
@@ -14,6 +16,12 @@ export default new Vuex.Store({
     },
     mutateCanvas(state, data) {
       state.canvas = data;
+    },
+    mutateBrushColor(state, data) {
+      state.brushColor = data;
+    },
+    mutateBrushSize(state, data) {
+      state.brushSize = data;
     },
   },
   actions: {
